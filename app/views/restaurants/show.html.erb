@@ -1,0 +1,33 @@
+
+<div class="container mt-3">
+<div class="row">
+  <div class="col-sm-8 offset-sm-2">
+
+<h1><%=@restaurant.name%></h1>
+<p><%=@restaurant.category%></p>
+
+
+<%= link_to "Update", edit_restaurant_path(@restaurant) %>
+<%= link_to "All restaurants", restaurants_path %>
+<%# <%= link_to "New review", new_restaurant_review_path(@restaurant) %>
+
+<%@restaurant.reviews.each do |review| %>
+
+ <p><%= review.content %></p>
+ <%= link_to "Delete",review_path(review),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
+
+<%end%>
+
+<%= simple_form_for [@restaurant, @review] do |f|%>
+   <%= f.input :content %>
+   <%= f.select :rating, Review::RATINGS %>
+  <%= f.submit%>
+  <% end %>
+
+<%# <%= render "form", review: @review %>
+
+</div>
+</div>
+</div>

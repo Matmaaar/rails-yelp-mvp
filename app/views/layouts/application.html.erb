@@ -11,6 +11,11 @@
   </head>
 
   <body>
+    <div class="bg-light d-flex justify-content-between p-3">
+    <a class="navbar-brand" href="/">Wonderful Restaurants</a>
+    <%= link_to "New restaurant", new_restaurant_path, class: "btn btn-primary" %>
+    </div>
+
     <%= yield %>
   </body>
 </html>
